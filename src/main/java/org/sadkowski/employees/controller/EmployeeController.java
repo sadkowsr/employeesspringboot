@@ -16,12 +16,11 @@ public class EmployeeController {
 
     EmployeeService employeeService;
 
-
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
 
-    @GetMapping({""})
+    @GetMapping("")
     public List<EmployeeDto> getEmployees(@RequestParam(defaultValue = "0", required=false) Integer pageNumber, @RequestParam(defaultValue = "10", required = false) Integer size){
                 List<Employee> emp = employeeService.getEmployees(pageNumber,size);
                 List<EmployeeDto> foundEmployees = EmployeeMapper.INSTANCE.map(emp);
@@ -30,9 +29,8 @@ public class EmployeeController {
 
     @GetMapping("/{employeeId}")
     public EmployeeDto getEmployee(@PathVariable Integer employeeId){
-        EmployeeDto foundEmployee = EmployeeMapper.INSTANCE.employeToEmployeDto(
+        return EmployeeMapper.INSTANCE.employeToEmployeDto(
                 employeeService.getEmployeeById(employeeId));
-        return foundEmployee;
     }
 
     @PostMapping("")
