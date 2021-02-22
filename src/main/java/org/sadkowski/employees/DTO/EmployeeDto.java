@@ -4,6 +4,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class EmployeeDto {
+
+    private Integer id;
+    private String name;
+    private Integer managerId;
+    
     public EmployeeDto(Integer id, String name, Integer managerId) {
         this.id = id;
         this.name = name;
@@ -36,9 +41,5 @@ public class EmployeeDto {
     public void setManagerId(Integer managerId) {
         this.managerId = managerId;
     }
-
-    private Integer id;
-    private String name;
-    private Integer managerId;
 
 }
